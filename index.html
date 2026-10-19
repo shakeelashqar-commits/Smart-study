@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173b75">
+<title>Smart Study | Classes 8–12</title>
+<style>
+:root{--navy:#173b75;--blue:#2d63cf;--sky:#edf4ff;--ink:#17233b;--muted:#64748b;--white:#fff;--line:#dce5f2;--green:#16794b;--orange:#b45c0b}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#f6f8fc}button,input,select{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(115deg,#173b75,#2865c7);color:#fff;padding:18px max(20px,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.3rem;letter-spacing:.2px}.logo{background:#fff;color:var(--navy);width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav button,.langbtn{border:1px solid #ffffff55;background:#ffffff16;color:#fff;border-radius:10px;padding:9px 12px}nav button:hover,.langbtn:hover{background:#ffffff30}
+main{max-width:1180px;margin:auto;padding:22px 18px 60px}.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:20px;align-items:stretch}.hero-main{background:linear-gradient(135deg,#e7efff,#fff);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,42px)}.eyebrow{color:var(--blue);font-weight:750;font-size:.86rem;text-transform:uppercase;letter-spacing:1px}.hero h1{font-size:clamp(2rem,4vw,3.4rem);line-height:1.08;margin:12px 0}.hero p{color:var(--muted);font-size:1.06rem;max-width:660px;line-height:1.65}.hero-side{background:var(--navy);color:#fff;border-radius:24px;padding:26px;display:flex;flex-direction:column;justify-content:space-between}.hero-side p{color:#d8e5ff}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}.stat{background:#ffffff16;border:1px solid #ffffff22;padding:12px;border-radius:14px}.stat strong{display:block;font-size:1.45rem}.stat span{font-size:.8rem;color:#d8e5ff}
+.primary,.secondary,.smallbtn{border:0;border-radius:11px;padding:11px 15px;font-weight:700}.primary{background:var(--blue);color:#fff}.primary:hover{background:#214fa8}.secondary{background:#e8effc;color:var(--navy)}.smallbtn{padding:8px 11px;background:#e8effc;color:var(--navy);font-size:.88rem}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin:32px 0 15px}.sectionhead h2{margin:0;font-size:1.55rem}.sectionhead p{margin:5px 0 0;color:var(--muted)}.classgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.classcard{border:1px solid var(--line);background:#fff;border-radius:17px;padding:17px;text-align:left;transition:.15s}.classcard:hover,.classcard.active{border-color:var(--blue);box-shadow:0 7px 22px #173b7512;transform:translateY(-1px)}.classnum{font-size:1.75rem;font-weight:850;color:var(--blue)}.classcard small{display:block;color:var(--muted);margin-top:5px}.toolbar{display:flex;gap:10px;flex-wrap:wrap}.toolbar select,.toolbar input,.loginform input{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;color:var(--ink)}.subjectgrid,.resourcegrid,.featuregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px}.card h3{margin:8px 0}.card p{color:var(--muted);line-height:1.5}.tag{display:inline-block;background:var(--sky);color:var(--navy);border-radius:20px;padding:5px 9px;font-size:.78rem;font-weight:750}.iconbox{width:43px;height:43px;border-radius:13px;background:var(--sky);display:grid;place-items:center;font-size:1.3rem}.progressbar{height:9px;background:#e8edf5;border-radius:99px;overflow:hidden}.progressbar span{display:block;height:100%;width:0;background:#20a06b;border-radius:99px;transition:width .25s}.muted{color:var(--muted)}.quizbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}.option{display:block;border:1px solid var(--line);border-radius:11px;padding:12px;margin:9px 0;cursor:pointer}.option:has(input:checked){border-color:var(--blue);background:var(--sky)}.option input{margin-right:9px}.result{margin-top:12px;padding:13px;border-radius:12px;background:#edf9f2;color:var(--green);font-weight:700}.resourceitem{display:flex;align-items:flex-start;gap:12px}.resourceitem .iconbox{flex-shrink:0}footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.9rem}.notice{border:1px solid #f3d4a2;background:#fff8e9;color:#7b4a0d;padding:13px 15px;border-radius:12px;line-height:1.5;margin-top:18px}.hidden{display:none!important}.modalback{position:fixed;inset:0;background:#10203b99;display:grid;place-items:center;padding:18px;z-index:5}.modal{background:#fff;border-radius:20px;padding:24px;width:min(440px,100%);box-shadow:0 25px 90px #0003}.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0}.close{border:0;background:#edf2fa;border-radius:9px;padding:6px 10px}.loginform{display:grid;gap:12px;margin-top:18px}.loginform label{font-size:.9rem;font-weight:650}.loginform input{width:100%;margin-top:5px}.profilepill{border:1px solid #ffffff55;border-radius:10px;padding:8px 11px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.classgrid{grid-template-columns:repeat(3,1fr)}.subjectgrid,.resourcegrid,.featuregrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){header{padding:15px}.classgrid{grid-template-columns:repeat(2,1fr)}.subjectgrid,.resourcegrid,.featuregrid{grid-template-columns:1fr}.statrow{grid-template-columns:1fr 1fr 1fr}.stat{padding:9px}.hero-side{min-height:210px}nav{width:100%}nav button{flex:1}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">✦</div><span>Smart Study</span></div>
+  <nav>
+    <button data-scroll="classes">Classes</button><button data-scroll="resources">Study Materials</button><button data-scroll="quiz">Quiz</button>
+    <button class="langbtn" id="langBtn">தமிழ்</button><button id="loginBtn">Student Login</button>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-main">
+      <div class="eyebrow" data-en="Your free learning space" data-ta="உங்களுக்கான இலவசக் கற்றல் தளம்">Your free learning space</div>
+      <h1 data-en="Learn smarter.<br>Grow further." data-ta="சிறப்பாகக் கற்போம்.<br>மேலும் முன்னேறுவோம்.">Learn smarter.<br>Grow further.</h1>
+      <p data-en="CBSE learning support for Classes 8–12, with chapter-wise study materials, video lessons, practice quizzes and progress tracking." data-ta="8–12 வகுப்புகளுக்கான CBSE கற்றல் உதவி — பாடவாரியான படிப்புப் பொருட்கள், வீடியோ பாடங்கள், பயிற்சி வினாடி வினாக்கள் மற்றும் முன்னேற்றக் கண்காணிப்பு.">CBSE learning support for Classes 8–12, with chapter-wise study materials, video lessons, practice quizzes and progress tracking.</p>
+      <button class="primary" data-scroll="classes" data-en="Explore Classes →" data-ta="வகுப்புகளைப் பார்க்க →">Explore Classes →</button>
+      <div class="notice" data-en="Starter demo: sample content is included. Real accounts, hosted videos and a full CBSE library must be connected before public launch." data-ta="தொடக்க மாதிரி: சில எடுத்துக்காட்டு உள்ளடக்கங்கள் சேர்க்கப்பட்டுள்ளன. பொதுமக்கள் பயன்படுத்துவதற்கு முன் உண்மையான கணக்குகள், வீடியோ இணைப்புகள் மற்றும் முழு CBSE பாடநூலகம் இணைக்கப்பட வேண்டும்.">Starter demo: sample content is included. Real accounts, hosted videos and a full CBSE library must be connected before public launch.</div>
+    </div>
+    <div class="hero-side">
+      <div><div style="font-size:2rem">🎓</div><h2 data-en="Study at your pace" data-ta="உங்கள் வேகத்தில் படியுங்கள்">Study at your pace</h2><p data-en="Choose your class, revise a chapter, and practise whenever you want." data-ta="வகுப்பைத் தேர்ந்தெடுத்து, பாடத்தை மீண்டும் படித்து, விரும்பும் நேரத்தில் பயிற்சி செய்யுங்கள்.">Choose your class, revise a chapter, and practise whenever you want.</p></div>
+      <div class="statrow"><div class="stat"><strong>5</strong><span data-en="Classes" data-ta="வகுப்புகள்">Classes</span></div><div class="stat"><strong>2</strong><span data-en="Languages" data-ta="மொழிகள்">Languages</span></div><div class="stat"><strong>₹0</strong><span data-en="For learners" data-ta="மாணவர்களுக்கு">For learners</span></div></div>
+    </div>
+  </section>
+
+  <section id="classes">
+    <div class="sectionhead"><div><h2 data-en="Choose your class" data-ta="உங்கள் வகுப்பைத் தேர்ந்தெடுக்கவும்">Choose your class</h2><p data-en="CBSE • Classes 8 to 12" data-ta="CBSE • 8 முதல் 12 ஆம் வகுப்பு வரை">CBSE • Classes 8 to 12</p></div></div>
+    <div class="classgrid" id="classGrid"></div>
+  </section>
+
+  <section id="subjects">
+    <div class="sectionhead"><div><h2 id="subjectTitle">Class 8 subjects</h2><p data-en="Start with a subject and explore the sample learning resources." data-ta="ஒரு பாடத்தைத் தேர்ந்தெடுத்து கற்றல் வளங்களைப் பாருங்கள்.">Start with a subject and explore the sample learning resources.</p></div>
+      <div class="toolbar"><select id="subjectFilter" aria-label="Filter subjects"><option value="all">All subjects</option><option>Mathematics</option><option>Science</option><option>English</option><option>Social Science</option></select></div>
+    </div>
+    <div class="subjectgrid" id="subjectGrid"></div>
+  </section>
+
+  <section id="resources">
+    <div class="sectionhead"><div><h2 data-en="Study materials" data-ta="படிப்புப் பொருட்கள்">Study materials</h2><p data-en="Videos, notes and practice questions in one place." data-ta="வீடியோக்கள், குறிப்புகள், பயிற்சி வினாக்கள் — ஒரே இடத்தில்.">Videos, notes and practice questions in one place.</p></div>
+      <div class="toolbar"><input id="searchMaterials" placeholder="Search materials…" aria-label="Search materials"></div>
+    </div>
+    <div class="resourcegrid" id="resourceGrid"></div>
+    <div class="notice" data-en="PDF note: this demo only offers a sample downloadable revision sheet. Add your own original or openly licensed PDFs to the materials folder before launch." data-ta="PDF குறிப்பு: இந்த மாதிரியில் எடுத்துக்காட்டு மறுபார்வைத் தாள் மட்டுமே பதிவிறக்கம் செய்யலாம். வெளியிடுவதற்கு முன் உங்கள் சொந்த அல்லது பகிர அனுமதியுள்ள PDF-களைச் சேர்க்கவும்.">PDF note: this demo only offers a sample downloadable revision sheet. Add your own original or openly licensed PDFs to the materials folder before launch.</div>
+  </section>
+
+  <section id="quiz">
+    <div class="sectionhead"><div><h2 data-en="Quick quiz" data-ta="விரைவு வினாடி வினா">Quick quiz</h2><p data-en="Try a sample question and check your answer." data-ta="ஒரு எடுத்துக்காட்டு வினாவுக்குப் பதிலளித்து சரிபார்க்கவும்.">Try a sample question and check your answer.</p></div><span class="tag" id="quizClassTag">Class 8</span></div>
+    <div class="quizbox">
+      <div class="tag" data-en="Mathematics • Exponents" data-ta="கணிதம் • அடுக்குகள்">Mathematics • Exponents</div>
+      <h3 id="quizQuestion">What is 2³ × 2²?</h3>
+      <div id="quizOptions"></div>
+      <button class="primary" id="checkAnswer" data-en="Check answer" data-ta="விடையைச் சரிபார்">Check answer</button>
+      <div id="quizResult" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="progress">
+    <div class="sectionhead"><div><h2 data-en="Your learning progress" data-ta="உங்கள் படிப்பு முன்னேற்றம்">Your learning progress</h2><p data-en="Progress on this demo device is saved in this browser only." data-ta="இந்த மாதிரியின் முன்னேற்றம் இந்த உலாவியில் மட்டும் சேமிக்கப்படும்.">Progress on this demo device is saved in this browser only.</p></div></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><strong data-en="Quiz questions completed" data-ta="முடித்த வினாக்கள்">Quiz questions completed</strong><strong id="progressLabel">0%</strong></div>
+      <div class="progressbar" style="margin:12px 0"><span id="progressFill"></span></div>
+      <p class="muted" id="progressText">Complete the quiz to begin tracking your progress.</p>
+      <button class="smallbtn" id="resetProgress" data-en="Reset demo progress" data-ta="மாதிரி முன்னேற்றத்தை மீட்டமை">Reset demo progress</button>
+    </div>
+  </section>
+</main>
+<footer>© <span id="year"></span> Smart Study • <span data-en="A free-learning starter project for Classes 8–12." data-ta="8–12 வகுப்புகளுக்கான இலவசக் கற்றல் தொடக்கத் திட்டம்.">A free-learning starter project for Classes 8–12.</span></footer>
+
+<div class="modalback hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+ <div class="modal"><div class="modalhead"><h2 id="loginTitle">Student Login</h2><button class="close" id="closeModal" aria-label="Close">✕</button></div>
+  <p class="muted" data-en="Demo only: this does not create a secure account or send data to a server." data-ta="மாதிரி மட்டுமே: இது பாதுகாப்பான கணக்கை உருவாக்காது; சேவையகத்திற்குத் தரவை அனுப்பாது.">Demo only: this does not create a secure account or send data to a server.</p>
+  <form class="loginform" id="demoLogin"><label>Name<input id="studentName" required maxlength="50" placeholder="Your name"></label><label>Email (optional)<input id="studentEmail" type="email" placeholder="you@example.com"></label><button class="primary" type="submit">Continue in demo</button></form>
+  <div id="loginMessage" class="result hidden"></div>
+ </div>
+</div>
+<script>
+const subjects = ["Mathematics","Science","English","Social Science"];
+const taSubjects = {"Mathematics":"கணிதம்","Science":"அறிவியல்","English":"ஆங்கிலம்","Social Science":"சமூக அறிவியல்"};
+const chapters = {
+"Mathematics":["Exponents and Powers","Squares and Square Roots","Linear Equations"],
+"Science":["Crop Production","Microorganisms","Force and Pressure"],
+"English":["Reading Skills","Grammar Practice","Writing Skills"],
+"Social Science":["Resources","The Constitution","Understanding Markets"]
+};
+let currentClass = 8, language = "en", quizDone = false;
+const $ = id => document.getElementById(id);
+function t(en,ta){return language==="ta"?ta:en}
+function getProgress(){try{return JSON.parse(localStorage.getItem("smartStudyProgress")||'{"completed":0,"score":0}')}catch(e){return {completed:0,score:0}}}
+function saveProgress(p){try{localStorage.setItem("smartStudyProgress",JSON.stringify(p))}catch(e){}}
+function renderClasses(){
+ $('classGrid').innerHTML=[8,9,10,11,12].map(n=>`<button class="classcard ${currentClass===n?'active':''}" data-class="${n}"><div class="classnum">${n}</div><strong>${t('Class','வகுப்பு')} ${n}</strong><small>${t('CBSE learning','CBSE கற்றல்')}</small></button>`).join('');
+ document.querySelectorAll('[data-class]').forEach(b=>b.addEventListener('click',()=>{currentClass=+b.dataset.class;renderClasses();renderSubjects();$('quizClassTag').textContent=t('Class','வகுப்பு')+' '+currentClass;document.getElementById('subjects').scrollIntoView({behavior:'smooth'})}));
+}
+function renderSubjects(){
+ $('subjectTitle').textContent=t('Class','வகுப்பு')+' '+currentClass+' '+t('subjects','பாடங்கள்');
+ const filter=$('subjectFilter').value;
+ const list=subjects.filter(s=>filter==='all'||s===filter);
+ $('subjectGrid').innerHTML=list.map((s,i)=>`<article class="card"><div class="iconbox">${['➗','🔬','📖','🌏'][subjects.indexOf(s)]}</div><h3>${language==='ta'?taSubjects[s]:s}</h3><p>${t('Explore sample chapters and learning activities.','எடுத்துக்காட்டு அத்தியாயங்கள் மற்றும் கற்றல் செயல்பாடுகளைப் பாருங்கள்.')}</p><span class="tag">${t('Sample chapters','எடுத்துக்காட்டு அத்தியாயங்கள்')}</span><div style="margin-top:14px"><button class="smallbtn chapterBtn" data-subject="${s}">${t('View chapters →','அத்தியாயங்களைப் பார்க்க →')}</button></div></article>`).join('');
+ document.querySelectorAll('.chapterBtn').forEach(b=>b.addEventListener('click',()=>showResources(b.dataset.subject)));
+}
+function showResources(subject){
+ const names=chapters[subject]||[];
+ $('resourceGrid').innerHTML=names.map((ch,i)=>`<article class="card resourceitem"><div class="iconbox">${i===0?'▶':i===1?'📄':'✓'}</div><div><span class="tag">${language==='ta'?taSubjects[subject]:subject}</span><h3>${ch}</h3><p>${t('Class','வகுப்பு')} ${currentClass} · ${t('Sample learning resource','எடுத்துக்காட்டு கற்றல் வளம்')}</p><button class="smallbtn" data-kind="${i}" data-chapter="${ch}">${i===0?t('Video lesson','வீடியோ பாடம்'):i===1?t('Download sample PDF','எடுத்துக்காட்டு PDF'):t('Practise questions','பயிற்சி வினாக்கள்')}</button></div></article>`).join('');
+ document.querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click',()=>{
+  if(b.dataset.kind==='1'){downloadPdf(b.dataset.chapter)}
+  else if(b.dataset.kind==='0'){alert(t('Add a public video URL for this chapter in app.js before launch.','வெளியிடுவதற்கு முன் இந்த அத்தியாயத்திற்கான பொது வீடியோ URL-ஐ app.js-ல் சேர்க்கவும்.'))}
+  else {document.getElementById('quiz').scrollIntoView({behavior:'smooth'})}
+ }));
+ $('resources').scrollIntoView({behavior:'smooth'});
+}
+function downloadPdf(chapter){
+ const content=`Smart Study — Class ${currentClass}\nCBSE Sample Revision Sheet\nChapter: ${chapter}\n\nThis is a starter template. Add original notes and chapter-specific learning content here.\n\nதமிழ் குறிப்பு: இது ஒரு மாதிரி மறுபார்வைத் தாள். அத்தியாயத்திற்கான சொந்தக் குறிப்புகளை இங்கே சேர்க்கவும்.\n`;
+ const blob=new Blob([content],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=`Smart-Study-Class-${currentClass}-${chapter.replace(/[^a-z0-9]+/gi,'-')}-sample.txt`;a.click();URL.revokeObjectURL(url);
+}
+function renderQuiz(){
+ const opts=[['32','32'],['16','16'],['64','64'],['10','10']];
+ $('quizOptions').innerHTML=opts.map(([en,ta],i)=>`<label class="option"><input type="radio" name="answer" value="${i}"> ${en}</label>`).join('');
+ $('quizResult').className='';$('quizResult').textContent='';
+}
+function updateProgress(){
+ const p=getProgress(),pct=Math.min(100,Math.round(p.completed/5*100));
+ $('progressLabel').textContent=pct+'%';$('progressFill').style.width=pct+'%';
+ $('progressText').textContent=p.completed?t('You have completed '+p.completed+' quiz question(s). Correct answers: '+p.score+'.','நீங்கள் '+p.completed+' வினாக்களை முடித்துள்ளீர்கள். சரியான விடைகள்: '+p.score+'.'):t('Complete the quiz to begin tracking your progress.','முன்னேற்றத்தைக் கண்காணிக்க வினாடி வினாவை முடிக்கவும்.');
+}
+$('checkAnswer').addEventListener('click',()=>{
+ const picked=document.querySelector('input[name="answer"]:checked');
+ if(!picked){$('quizResult').className='notice';$('quizResult').textContent=t('Choose an answer first.','முதலில் ஒரு விடையைத் தேர்ந்தெடுக்கவும்.');return}
+ const correct=Number(picked.value)===0;
+ $('quizResult').className='result';$('quizResult').textContent=correct?t('Correct! 2³ × 2² = 2⁵ = 32.','சரி! 2³ × 2² = 2⁵ = 32.'):t('Not quite. Use the same-base rule: add the exponents. Answer: 32.','மீண்டும் முயற்சிக்கவும். ஒரே அடிப்படை இருந்தால் அடுக்குகளைக் கூட்டவும். விடை: 32.');
+ const p=getProgress();if(!quizDone){p.completed=Math.min(5,p.completed+1);if(correct)p.score++;saveProgress(p);quizDone=true;updateProgress()}
+});
+$('resetProgress').addEventListener('click',()=>{saveProgress({completed:0,score:0});quizDone=false;updateProgress();$('quizResult').textContent='';});
+$('subjectFilter').addEventListener('change',renderSubjects);
+$('searchMaterials').addEventListener('input',e=>{
+ const q=e.target.value.toLowerCase();
+ document.querySelectorAll('#resourceGrid .card').forEach(c=>c.classList.toggle('hidden',!c.textContent.toLowerCase().includes(q)));
+});
+document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.scroll).scrollIntoView({behavior:'smooth'})));
+$('langBtn').addEventListener('click',()=>{
+ language=language==='en'?'ta':'en';document.documentElement.lang=language;
+ document.querySelectorAll('[data-en]').forEach(el=>{const val=el.dataset[language];if(val!==undefined)el.innerHTML=val});
+ $('langBtn').textContent=language==='en'?'தமிழ்':'English';
+ $('loginBtn').textContent=language==='en'?'Student Login':'மாணவர் உள்நுழைவு';
+ renderClasses();renderSubjects();renderQuiz();updateProgress();
+});
+$('loginBtn').addEventListener('click',()=>$('loginModal').classList.remove('hidden'));
+$('closeModal').addEventListener('click',()=>$('loginModal').classList.add('hidden'));
+$('loginModal').addEventListener('click',e=>{if(e.target===$('loginModal'))$('loginModal').classList.add('hidden')});
+$('demoLogin').addEventListener('submit',e=>{
+ e.preventDefault();const name=$('studentName').value.trim();if(!name)return;
+ $('loginMessage').classList.remove('hidden');$('loginMessage').textContent=t('Welcome, '+name+'! Demo mode only — secure account login is not connected yet.','வரவேற்கிறோம், '+name+'! இது மாதிரி மட்டுமே — பாதுகாப்பான கணக்கு உள்நுழைவு இன்னும் இணைக்கப்படவில்லை.');
+ $('loginBtn').textContent=name;$('loginModal').classList.add('hidden');
+});
+$('year').textContent=new Date().getFullYear();
+renderClasses();renderSubjects();renderQuiz();updateProgress();
+</script>
+</body>
+</html>
